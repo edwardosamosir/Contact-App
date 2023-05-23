@@ -4,6 +4,7 @@ import Layout from '../pages/Layout'
 import HomePage from '../pages/HomePage'
 import AddContactPage from '../pages/AddContactPage'
 import EditContactPage from '../pages/EditContactPage'
+import DeleteContactPage from '../pages/DeleteContactPage'
 
 const router = createBrowserRouter([
     {   
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
             {
                 path : "/contacts/edit/:contactId",
                 element : <EditContactPage />
+            }
+            ,
+            {
+                path : "/contacts/delete/:contactId",
+                element : <DeleteContactPage />
             }
         ]
     }

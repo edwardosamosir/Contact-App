@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import qontakteLogo from '../assets/qontakte-logo-nobg.png'
 import myContacts from '../assets/my-contacts.svg'
 import addContact from '../assets/add-contact.svg'
@@ -15,22 +16,22 @@ export default function Sidebar() {
 
       <aside id="logo-sidebar" className="shadow-md bg-red-300 fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-          <a href="#" className="flex items-center pl-2.5 mb-5">
+          <Link to={`/`} className="flex items-center pl-2.5 mb-5">
             <img src={qontakteLogo} className="h-9 mr-3 sm:h-10" alt="Qontakte Logo" />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">QONTAKTE</span>
-          </a>
+          </Link>
           <ul className="space-y-2 font-medium">
             <li>
-              <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <Link to={`/`} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <img src={myContacts} className="h-6 w-6 mr-3" alt="My Contacts" />
                 <span className="flex-1 ml-3 whitespace-nowrap">My Contacts</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <Link to={`/contacts/add`} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <img src={addContact} className="h-6 w-6 mr-3" alt="Add Contact" />
                 <span className="ml-3">Add Contact</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

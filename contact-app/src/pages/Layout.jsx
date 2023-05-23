@@ -10,7 +10,7 @@ export default function Layout() {
         <div className='w-1/12'>
           <Sidebar />
         </div>
-          <div className='w-8/12 mt-10'>
+        <div className='w-8/12 mt-10'>
           <Outlet />
         </div>
       </div>
