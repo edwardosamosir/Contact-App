@@ -1,10 +1,22 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import ContactRow from '../components/ContactRow'
+import LoadingScreen from '../components/LoadingScreen'
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "../store/action/actionCreator";
 
 export default function HomePage() {
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch(fetchContacts()), [dispatch]);
+  const { contacts, loading } = useSelector(
+    (state) => state.contact
+  );
+
   return (
     <>
-      <div className="relative shadow-md sm:rounded-lg p-10 w-full ml-8 mr-96 sm:ml-48">
+      <div className="relative shadow-md sm:rounded-lg p-16 pb-96 w-full ml-8 mr-96 sm:ml-48">
+      { loading ? <LoadingScreen /> : (
+        <>
         <div className="flex items-center justify-start py-8 bg-white dark:bg-gray-800">
           <label htmlFor="table-search" className="sr-only ">Search</label>
           <div className="relative">
@@ -14,7 +26,7 @@ export default function HomePage() {
             <input type="text" id="table-search-users" className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 w-full sm:w-72 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for contacts" />
           </div>
         </div>
-        <div className='overflow-x-auto'>
+        <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -30,88 +42,11 @@ export default function HomePage() {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                
-                <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                  <img className="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="Jese image" />
-                    <div className="pl-3">
-                      <div className="text-base font-semibold">Neil Sims</div>
-                    </div>
-                </th>
-                <td className="px-6 py-4">
-                25 years old
-                </td>
-                <td className="px-6 py-4">
-                  <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-10">Edit Contact</a>
-                  <a href="#" type="button" className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete Contact</a>
-                </td>
-              </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                
-                <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <img className="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="Jese image" />
-                    <div className="pl-3">
-                      <div className="text-base font-semibold">Bonnie Green</div>
-                    </div>
-                </th>
-                <td className="px-6 py-4">
-                  25 years old
-                </td>
-                <td className="px-6 py-4">
-                  <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-10">Edit Contact</a>
-                  <a href="#" type="button" className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete Contact</a>
-                </td>
-              </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                
-                <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <img className="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Jese image" />
-                    <div className="pl-3">
-                      <div className="text-base font-semibold">Jese Leos</div>
-                    </div>
-                </th>
-                <td className="px-6 py-4">
-                25 years old
-                </td>
-                <td className="px-6 py-4">
-                  <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-10">Edit Contact</a>
-                  <a href="#" type="button" className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete Contact</a>
-                </td>
-              </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                
-                <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <img className="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Jese image" />
-                    <div className="pl-3">
-                      <div className="text-base font-semibold">Thomas Lean</div>
-                    </div>
-                </th>
-                <td className="px-6 py-4">
-                25 years old
-                </td>
-                <td className="px-6 py-4">
-                  <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-10">Edit Contact</a>
-                  <a href="#" type="button" className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete Contact</a>
-                </td>
-              </tr>
-              <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                
-                <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <img className="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-4.jpg" alt="Jese image" />
-                    <div className="pl-3">
-                      <div className="text-base font-semibold">Leslie Livingston</div>
-                    </div>
-                </th>
-                <td className="px-6 py-4">
-                25 years old
-                </td>
-                <td className="px-6 py-4">
-                  <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-10">Edit Contact</a>
-                  <a href="#" type="button" className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete Contact</a>
-                </td>
-              </tr>
+            {contacts.data.map((contact, index) => {
+                return <ContactRow contact={contact} key={contact.id}  />;
+              })}
             </tbody>
-            </table>
+          </table>
         </div>
         <div id="editUserModal" tabndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div className="relative w-full max-w-2xl max-h-full">
@@ -166,6 +101,8 @@ export default function HomePage() {
             </form>
           </div>
         </div>
+        </>
+        )}
       </div>
 
     </>

@@ -13,7 +13,7 @@ export default function Sidebar() {
         </svg>
       </button>
 
-      <aside id="logo-sidebar" className=" bg-red-300 fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+      <aside id="logo-sidebar" className="shadow-md bg-red-300 fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <a href="#" className="flex items-center pl-2.5 mb-5">
             <img src={qontakteLogo} className="h-9 mr-3 sm:h-10" alt="Qontakte Logo" />
