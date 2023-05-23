@@ -30,7 +30,7 @@ export default function Sidebar() {
             <li>
               <Link to={`/contacts/add`} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <img src={addContact} className="h-6 w-6 mr-3" alt="Add Contact" />
-                <span className="ml-3">Add Contact</span>
+                <span className="ml-3">Add New Contact</span>
               </Link>
             </li>
           </ul>

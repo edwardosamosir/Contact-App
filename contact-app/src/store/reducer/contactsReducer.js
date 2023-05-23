@@ -5,7 +5,6 @@ const defaultState = {
     contactDetail: null,
     loading: true,
     updateStatus: null,
-    contactResponse: null,
     errorMessage: ''
 }
 
@@ -19,7 +18,7 @@ function contactsReducer(state = defaultState, action) {
         case CONTACTS_FETCH_ID:
             return {
                 ...state,
-                contactDetail: action.payload
+                contactDetail: action.payload.data
             }
         case CONTACTS_FETCH_LOADING:
             return {
@@ -30,16 +29,6 @@ function contactsReducer(state = defaultState, action) {
             return {
                 ...state,
                 updateStatus: action.payload
-            }
-        case CONTACTS_ADD_RESPONSE:
-            return {
-                ...state,
-                contactResponse: action.payload
-            }
-        case CONTACTS_ADD_LOADING:
-            return {
-                ...state,
-                loading: action.payload
             }
         case CONTACTS_ERROR:
             return {

@@ -6,9 +6,6 @@ import {
     CONTACTS_FETCH_ALL,
     CONTACTS_FETCH_ID,
     CONTACTS_FETCH_LOADING,
-    CONTACTS_ADD_LOADING,
-    CONTACTS_ADD_RESPONSE,
-    CONTACTS_UPDATE
 } from "./actionType";
 
   export const fetchContactsLoading = () => {
@@ -26,7 +23,7 @@ import {
           if (response.ok) {
             return response.json();
           } else {
-            throw new Error("something wrong");
+            throw new Error("Internal Server Error");
           }
         })
         .then((data) => {
@@ -42,5 +39,71 @@ import {
     };
   };
 
+  export const addContact = (payload) => {
+    return (dispatch) => {
+      dispatch({type : CONTACTS_FETCH_LOADING, payload : true})
+      fetch( baseUrl, {
+        method: "POST",
+        body: JSON.stringify(payload),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Internal Server Error");
+          }
+        })
+        .catch((error) => {
+          dispatch({type : CONTACTS_ERROR, payload : error?.message })
+        })
+        .finally( _ => {
+          dispatch({type : CONTACTS_FETCH_LOADING, payload : false})
+        })
+    }
+  }
 
+
+  export const fetchDetailContact = (contactId) => {
+    return (dispatch) => {
+      fetch(`${baseUrl}/${contactId}`, {
+        method: "GET"
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Internal Server Error");
+          }
+        })
+        .then((data) => {
+          dispatch({ type: CONTACTS_FETCH_ID, payload: data });
+        })
+        .catch((error) => {
+          dispatch({ type: "error" });
+        });
+    };
+  };
+
+  export const updateContact = (payload, contactId) => {
+    return (dispatch) => {
+      dispatch({type : CONTACTS_FETCH_LOADING, payload : true})
+      fetch(`${baseUrl}/${contactId}`, {
+        method: "PUT",
+        body: JSON.stringify(payload),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("something wrong");
+          }
+        })
+        .catch((error) => {
+          dispatch({type : CONTACTS_ERROR, payload : error?.message })
+        })
+        .finally(_=>{
+          dispatch({type : CONTACTS_FETCH_LOADING, payload : false})
+        })
+    }
+  }
   
