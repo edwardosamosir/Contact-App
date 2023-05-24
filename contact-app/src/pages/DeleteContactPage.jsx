@@ -30,7 +30,7 @@ export default function DeleteContactPage() {
   return (
     <>
       <div className="flex justify-center items-center relative mt-32 sm:rounded-lg sm:ml-52 ">
-        <div className="w-full sm:w-auto sm:max-w-xs ">
+        <div className="w-full sm:w-auto sm:max-w-xs w-2xl">
           <div className="p-6 bg-white rounded-lg shadow dark:bg-gray-700 ">
             <div className="text-center">
               <svg
