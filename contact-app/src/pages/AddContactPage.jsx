@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addContact } from "../store/action/actionCreator";
 
+
 export default function AddContactPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,19 +14,32 @@ export default function AddContactPage() {
     photo: ""
   });
 
+  const [error, setError] = useState(null)
+
   const contactDataHandler = (event) => {
     const { name, value } = event.target;
     const obj = { ...contactData, [name]: value };
-    
+
     setContactData(obj);
   };
 
   const submitNewContact = async (event) => {
     try {
       event.preventDefault();
-      await dispatch(addContact(contactData))
-      navigate('/')
-    } 
+
+      if (!contactData.firstName) {
+        setError("First name cannot be empty!")
+      } else if (!contactData.lastName) {
+        setError("Last name cannot be empty!")
+      } else if (!contactData.age) {
+        setError("Age cannot be empty!")
+      } else if (!contactData.photo) {
+        setError("Link photo cannot be empty!")
+      } else {
+        await dispatch(addContact(contactData))
+        navigate('/')
+      }
+    }
     catch (error) {
       console.log(error)
     }
@@ -45,6 +59,15 @@ export default function AddContactPage() {
             </h3>
           </div>
           <div className="p-10 space-y-6">
+            {
+              error && <div id="alert-2" className="flex p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg aria-hidden="true" className="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path></svg>
+                <span className="sr-only">Info</span>
+                <div className="ml-3 text-sm font-medium">
+                  <span>Alert!</span> {error} 
+                </div>
+              </div>
+            }
             <div className="grid grid-cols-1 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label

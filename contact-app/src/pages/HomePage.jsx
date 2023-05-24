@@ -49,7 +49,7 @@ export default function HomePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {contacts.data.filter((el) =>
+                  {contacts?.data?.filter((el) =>
                       el.firstName.toLowerCase().includes(query.toLowerCase()) ||
                       el.lastName.toLowerCase().includes(query.toLowerCase())
                     )

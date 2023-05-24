@@ -1,4 +1,4 @@
-import { CONTACTS_FETCH_ALL, CONTACTS_FETCH_ID, CONTACTS_UPDATE, CONTACTS_FETCH_LOADING,CONTACTS_ERROR } from "../action/actionType"
+import { CONTACTS_FETCH_ALL, CONTACTS_FETCH_ID, CONTACTS_FETCH_LOADING, CONTACTS_ERROR } from "../action/actionType"
 
 const defaultState = {
     contacts: [],
@@ -24,11 +24,6 @@ function contactsReducer(state = defaultState, action) {
             return {
                 ...state,
                 loading: action.payload
-            }
-        case CONTACTS_UPDATE:
-            return {
-                ...state,
-                updateStatus: action.payload
             }
         case CONTACTS_ERROR:
             return {
