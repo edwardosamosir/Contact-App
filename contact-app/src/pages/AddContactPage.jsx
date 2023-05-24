@@ -53,7 +53,7 @@ export default function AddContactPage() {
           action="#"
           className="relative w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2 bg-white rounded-lg shadow dark:bg-gray-700 sm:ml-10"
         >
-          <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+          <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600 bg-blue-50 dark:bg-blue-800">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               Add New Contact
             </h3>

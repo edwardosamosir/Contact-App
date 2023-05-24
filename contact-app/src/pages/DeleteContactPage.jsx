@@ -29,13 +29,13 @@ export default function DeleteContactPage() {
 
   return (
     <>
-      <div className="flex justify-center items-center relative mt-32 sm:rounded-lg sm:ml-52">
-        <div className="w-full sm:w-auto sm:max-w-xs">
-          <div className="p-6 bg-white rounded-lg shadow dark:bg-gray-700">
+      <div className="flex justify-center items-center relative mt-32 sm:rounded-lg sm:ml-52 ">
+        <div className="w-full sm:w-auto sm:max-w-xs ">
+          <div className="p-6 bg-white rounded-lg shadow dark:bg-gray-700 ">
             <div className="text-center">
               <svg
                 aria-hidden="true"
-                className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+                className="mx-auto mb-4 text-gray-400 w-24 h-w-24 dark:text-gray-200 "
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ export default function DeleteContactPage() {
               <Link to={'/'}>
               <button
                 type="button"
-                className="w-full sm:w-auto text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 sm: justify-center"
+                className="w-full sm:w-auto text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 sm: justify-center "
               >
                 No, cancel
               </button>
