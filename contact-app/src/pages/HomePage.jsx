@@ -7,7 +7,7 @@ import { fetchContacts, searchQuery } from "../store/action/actionCreator";
 export default function HomePage() {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchContacts()), [dispatch]);
+  useEffect(() => dispatch(fetchContacts()), []);
   const { contacts, loading } = useSelector(
     (state) => state.contact
   );
